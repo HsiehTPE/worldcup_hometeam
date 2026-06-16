@@ -284,19 +284,78 @@ body::before {
 
 .result-header { text-align: center; }
 .result-title { margin-top: 18px; font-size: clamp(42px, 8vw, 82px); line-height: 1; }
+.result-label {
+  margin: 14px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.result-hook {
+  margin: 16px auto 0;
+  max-width: 760px;
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: clamp(18px, 2.6vw, 26px);
+  line-height: 1.7;
+  color: #eef4fb;
+}
+
 .result-flag {
-  display: grid;
-  place-items: center;
   width: min(220px, 42vw);
   height: min(220px, 42vw);
   margin: 12px auto 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 35%),
-    linear-gradient(135deg, rgba(247,201,72,0.22), rgba(56,214,169,0.14));
-  border: 1px solid rgba(255,255,255,0.12);
-  font-size: clamp(72px, 18vw, 130px);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.result-card {
+  padding: 22px;
+}
+
+.result-card--story {
+  grid-row: span 2;
+}
+
+.result-card-label {
+  margin: 0 0 14px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.result-body,
+.result-quote,
+.result-share-copy {
+  margin: 0;
+  font-family: "Noto Sans SC", sans-serif;
+  color: #edf3fb;
+}
+
+.result-body {
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.result-quote {
+  font-size: 24px;
+  line-height: 1.55;
+}
+
+.result-share-copy {
+  font-size: 18px;
+  line-height: 1.7;
 }
 
 .result-actions {
@@ -318,4 +377,8 @@ body::before {
   .brand-pill, .progress-copy { justify-self: start; }
   .quiz-home-button { position: static; justify-self: end; margin-bottom: 12px; }
   .progress-row { align-items: start; }
+  .result-grid { grid-template-columns: 1fr; }
+  .result-card--story { grid-row: auto; }
+  .result-hook { text-align: left; margin-left: 0; }
+  .result-title { font-size: clamp(36px, 12vw, 72px); }
 }

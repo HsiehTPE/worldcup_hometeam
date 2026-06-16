@@ -18,7 +18,7 @@ Direct result page examples:
 - GitHub Pages home: `https://hsiehtpe.github.io/worldcup_hometeam/`
 - GitHub Pages result: `https://hsiehtpe.github.io/worldcup_hometeam/?result=ARG`
 
-Supported result codes: `ARG`, `BRA`, `FRA`, `ENG`, `ESP`, `GER`, `POR`, `NED`, `KOR`, `MEX`, `USA`, `CAN`, `MAR`, `CRO`, `URU`, `NOR`.
+Supported result codes: `ARG`, `BRA`, `FRA`, `ENG`, `ESP`, `GER`, `POR`, `NED`, `KOR`, `MEX`, `USA`, `CPV`, `MAR`, `CRO`, `URU`, `NOR`.
 
 ## GitHub Pages
 
