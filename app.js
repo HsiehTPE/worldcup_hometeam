@@ -31,12 +31,12 @@ const QUESTIONS = [
   },
   {
     part: "出发前",
-    title: "如果只能选一种世界杯观赛路线，你最愿意报名哪一团？",
+    title: "真到了抢世界杯门票那一刻，你最想先锁定哪一种比赛体验？",
     options: [
-      { label: "A", text: "纽约 + 洛杉矶 + 墨西哥城热门城市打卡团，行程安排得很满" },
-      { label: "B", text: "波士顿 + 费城 + 瓜达拉哈拉经典文化深度团，节奏稳、内容厚" },
-      { label: "C", text: "温哥华 + 蒙特雷 + 堪萨斯城这种小众逆袭团" },
-      { label: "D", text: "多伦多 + 西雅图周边 + 新晋热门街区实验团" }
+      { label: "A", text: "揭幕战、焦点战这种全网都会讨论的高热度场次，先抢到再说" },
+      { label: "B", text: "传统强队之间的经典对决，哪怕不是最炸也值得现场看一次" },
+      { label: "C", text: "容易出黑马故事的比赛，过程和气氛可能比名气更精彩" },
+      { label: "D", text: "话题还没完全起来的新鲜场次，越有未知感越想冲" }
     ]
   },
   {
@@ -225,6 +225,10 @@ const resultTitle = document.querySelector("#result-title");
 const copyButton = document.querySelector("#copy-button");
 const restartButton = document.querySelector("#restart-button");
 
+function getTeamByCode(teamCode) {
+  return TEAM_DATA[teamCode] || null;
+}
+
 function showQuiz() {
   hero.classList.add("hidden");
   quizPanel.classList.remove("hidden");
@@ -349,16 +353,29 @@ function getFallbackTeam(code) {
 function buildResult() {
   const resultCodeValue = buildResultCode();
   const teamCode = RESULT_MAP[resultCodeValue] || getFallbackTeam(resultCodeValue);
-  return TEAM_DATA[teamCode];
+  return getTeamByCode(teamCode);
 }
 
-function renderResult() {
-  const team = buildResult();
+function renderResult(teamOverride = null) {
+  const team = teamOverride || buildResult();
   resultPhase.textContent = "World Cup 2026";
   resultPhase.classList.remove("hidden");
   resultTitle.textContent = team.title;
   resultFlag.textContent = team.flag;
   showResult();
+}
+
+function tryRenderResultFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const resultCode = (params.get("result") || "").trim().toUpperCase();
+  const team = getTeamByCode(resultCode);
+
+  if (!team) {
+    return false;
+  }
+
+  renderResult(team);
+  return true;
 }
 
 startButton.addEventListener("click", () => moveToQuestion(0));
@@ -397,4 +414,6 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
-showHome();
+if (!tryRenderResultFromUrl()) {
+  showHome();
+}
