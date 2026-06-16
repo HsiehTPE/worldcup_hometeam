@@ -36,7 +36,7 @@ body::before {
 }
 
 .page-shell {
-  width: min(1100px, calc(100% - 32px));
+  width: min(1240px, calc(100% - 32px));
   margin: 0 auto;
   padding: 32px 0 56px;
   position: relative;
@@ -284,9 +284,10 @@ body::before {
 
 .result-hook {
   margin: 16px auto 0;
-  max-width: 760px;
+  max-width: 1080px;
+  white-space: nowrap;
   font-family: "Noto Sans SC", sans-serif;
-  font-size: clamp(18px, 2.6vw, 26px);
+  font-size: clamp(17px, 2vw, 24px);
   line-height: 1.7;
   color: #eef4fb;
 }
@@ -362,7 +363,7 @@ body::before {
   .progress-row { align-items: start; }
   .result-grid { grid-template-columns: 1fr; }
   .result-card--story { grid-row: auto; }
-  .result-hook { text-align: left; margin-left: 0; }
+  .result-hook { text-align: center; margin-left: auto; margin-right: auto; white-space: normal; }
   .result-title { font-size: clamp(36px, 12vw, 72px); }
   .hero-action-row { justify-content: stretch; }
   .hero-action-row .primary-button { width: 100%; }
