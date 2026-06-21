@@ -432,6 +432,14 @@ function renderQuestion(index) {
 
   partLabel.textContent = QUESTIONS[index].part;
   partLabel.classList.remove("hidden");
+  partLabel.classList.remove("eyebrow--departure", "eyebrow--travel", "eyebrow--return");
+  if (QUESTIONS[index].part === "出发前") {
+    partLabel.classList.add("eyebrow--departure");
+  } else if (QUESTIONS[index].part === "旅途中") {
+    partLabel.classList.add("eyebrow--travel");
+  } else if (QUESTIONS[index].part === "归途") {
+    partLabel.classList.add("eyebrow--return");
+  }
   questionIndex.textContent = `Q${index + 1}`;
   progressText.textContent = `${index + 1} / ${total}`;
   progressFill.style.width = `${((index + 1) / total) * 100}%`;
@@ -581,6 +589,23 @@ function tryRenderResultFromUrl() {
   return true;
 }
 
+function tryRenderQuestionFromUrl() {
+  const searchParams = new URLSearchParams(window.location.search);
+  const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+  const rawQuestion = (searchParams.get("question") || hashParams.get("question") || "").trim();
+  if (!rawQuestion) {
+    return false;
+  }
+
+  const questionNumber = Number.parseInt(rawQuestion, 10);
+  if (!Number.isInteger(questionNumber) || questionNumber < 1 || questionNumber > QUESTIONS.length) {
+    return false;
+  }
+
+  moveToQuestion(questionNumber - 1);
+  return true;
+}
+
 startButton.addEventListener("click", () => moveToQuestion(0));
 homeButton.addEventListener("click", showHome);
 
@@ -618,5 +643,7 @@ copyButton.addEventListener("click", async () => {
 });
 
 if (!tryRenderResultFromUrl()) {
-  showHome();
+  if (!tryRenderQuestionFromUrl()) {
+    showHome();
+  }
 }

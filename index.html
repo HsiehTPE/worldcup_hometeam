@@ -14,15 +14,19 @@
     <header class="hero">
       <div class="hero-topbar">
         <div class="brand-wordmark">World Cup · 2026</div>
-        <div class="brand-pill">Home Team Test</div>
+        <img
+          class="brand-logo"
+          src="./assets/main_logo_clean.png"
+          alt="MatchMate"
+        >
       </div>
       <h1>你的 2026 世界杯<br>命定主队是谁？</h1>
       <p class="hero-copy">
-        16 道题，测出你会为哪支世界杯主队动心。
+        美加墨旅行问答，测测谁是你的世界杯主队。
       </p>
       <div class="hero-meta">
-        <span><strong>16</strong> 道世界杯题目</span>
-        <span><strong>16</strong> 支主队结果</span>
+        <span><strong>16</strong> 个旅途选择</span>
+        <span><strong>16</strong> 个大赛主队</span>
       </div>
       <div class="hero-action-row">
         <button id="start-button" class="primary-button">开始测试</button>
@@ -32,17 +36,15 @@
     <main class="quiz-stage">
       <section id="quiz-panel" class="panel hidden" aria-live="polite">
         <button id="home-button" class="ghost-button quiz-home-button" type="button">返回首页</button>
-        <div class="progress-row">
-          <div>
-            <p id="part-label" class="eyebrow"></p>
-            <h2 id="question-index" class="section-title"></h2>
+        <div class="quiz-brandbar">
+          <div class="quiz-brand-copy">
+            <span class="quiz-brand-wordmark">2026 世界杯主队测试</span>
+            <span class="quiz-brand-subtitle">测出你的命定主队</span>
           </div>
-          <div class="quiz-brandbar">
-            <div class="quiz-brand-copy">
-              <span class="quiz-brand-wordmark">2026 世界杯人格测试</span>
-              <span class="quiz-brand-subtitle">测出你的命定主队</span>
-            </div>
-          </div>
+        </div>
+        <div class="question-meta-row">
+          <h2 id="question-index" class="section-title question-index"></h2>
+          <p id="part-label" class="eyebrow"></p>
           <div class="progress-copy">
             <span id="progress-text"></span>
           </div>
@@ -101,6 +103,6 @@
     </main>
   </div>
 
-  <script src="./app.js"></script>
+  <script src="./app.js?v=20260622"></script>
 </body>
 </html>
