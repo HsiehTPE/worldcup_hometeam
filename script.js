@@ -401,7 +401,7 @@ function getCurrentDisplayedTeam() {
 }
 
 function getBadgeUrl(team) {
-  return team.badgeFile ? `./assets/badges/${team.badgeFile}` : "";
+  return team.badgeFile ? `./images/badges/${team.badgeFile}` : "";
 }
 
 function showQuiz() {
@@ -653,8 +653,8 @@ const SOCIAL_CONTENT = {
     title: "微信扫码，组队看球",
     copy: "微信里长按二维码识别：进球迷群聊球，或关注公众号",
     qrs: [
-      { src: "./assets/qr-wechat-group.jpg", caption: "扫码进球迷群 · 组队看球" },
-      { src: "./assets/qr-wechat.jpg", caption: "关注公众号「看球搭子 MatchMate AI」" }
+      { src: "./images/qr-wechat-group.jpg", caption: "扫码进球迷群 · 组队看球" },
+      { src: "./images/qr-wechat.jpg", caption: "关注公众号「看球搭子 MatchMate AI」" }
     ]
   },
   xhs: {
