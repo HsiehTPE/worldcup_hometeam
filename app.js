@@ -642,6 +642,102 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
+const socialModal = document.querySelector("#social-modal");
+const socialModalTitle = document.querySelector("#social-modal-title");
+const socialModalCopy = document.querySelector("#social-modal-copy");
+const socialModalMedia = document.querySelector("#social-modal-media");
+const socialModalLink = document.querySelector("#social-modal-link");
+
+const SOCIAL_CONTENT = {
+  wechat: {
+    title: "微信扫码，组队看球",
+    copy: "微信里长按二维码识别：进球迷群聊球，或关注公众号",
+    qrs: [
+      { src: "./assets/qr-wechat-group.jpg", caption: "扫码进球迷群 · 组队看球" },
+      { src: "./assets/qr-wechat.jpg", caption: "关注公众号「看球搭子 MatchMate AI」" }
+    ]
+  },
+  xhs: {
+    title: "在小红书找到我们",
+    copy: "点击下方按钮，前往我们的小红书主页",
+    link: "https://www.xiaohongshu.com/user/profile/630711410000000012003e0a",
+    linkLabel: "前往小红书主页"
+  }
+};
+
+function renderSocialMedia(data) {
+  if (!socialModalMedia) {
+    return;
+  }
+  socialModalMedia.innerHTML = "";
+  const qrs = data.qrs || [];
+  qrs.forEach((qr) => {
+    const figure = document.createElement("figure");
+    figure.className = "social-qr";
+    const img = document.createElement("img");
+    img.alt = qr.caption || data.title;
+    img.loading = "lazy";
+    img.src = qr.src;
+    figure.appendChild(img);
+    if (qr.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = qr.caption;
+      figure.appendChild(caption);
+    }
+    socialModalMedia.appendChild(figure);
+  });
+  socialModalMedia.classList.toggle("hidden", qrs.length === 0);
+}
+
+function openSocialModal(kind) {
+  const data = SOCIAL_CONTENT[kind];
+  if (!socialModal || !data) {
+    return;
+  }
+  socialModalTitle.textContent = data.title;
+  socialModalCopy.textContent = data.copy || "";
+  socialModalCopy.classList.toggle("hidden", !data.copy);
+
+  renderSocialMedia(data);
+
+  if (socialModalLink) {
+    if (data.link) {
+      socialModalLink.href = data.link;
+      socialModalLink.textContent = data.linkLabel || "前往主页";
+      socialModalLink.classList.remove("hidden");
+    } else {
+      socialModalLink.classList.add("hidden");
+      socialModalLink.removeAttribute("href");
+    }
+  }
+
+  socialModal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeSocialModal() {
+  if (!socialModal) {
+    return;
+  }
+  socialModal.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll("[data-social]").forEach((trigger) => {
+  trigger.addEventListener("click", () => openSocialModal(trigger.getAttribute("data-social")));
+});
+
+if (socialModal) {
+  socialModal.querySelectorAll("[data-close]").forEach((closer) => {
+    closer.addEventListener("click", closeSocialModal);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSocialModal();
+    }
+  });
+}
+
 if (!tryRenderResultFromUrl()) {
   if (!tryRenderQuestionFromUrl()) {
     showHome();
