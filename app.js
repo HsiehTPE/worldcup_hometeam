@@ -642,6 +642,35 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
+const socialModal = document.querySelector("#social-modal");
+
+function openSocialModal() {
+  if (socialModal) {
+    socialModal.classList.remove("hidden");
+  }
+}
+
+function closeSocialModal() {
+  if (socialModal) {
+    socialModal.classList.add("hidden");
+  }
+}
+
+document.querySelectorAll('[data-social="wechat"]').forEach((trigger) => {
+  trigger.addEventListener("click", openSocialModal);
+});
+
+if (socialModal) {
+  socialModal.querySelectorAll("[data-close]").forEach((closer) => {
+    closer.addEventListener("click", closeSocialModal);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSocialModal();
+    }
+  });
+}
+
 if (!tryRenderResultFromUrl()) {
   if (!tryRenderQuestionFromUrl()) {
     showHome();

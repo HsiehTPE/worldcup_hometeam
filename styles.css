@@ -512,3 +512,151 @@ body::before {
     font-size: 13px;
   }
 }
+
+/* ── 找到我们 / 社交入口 ── */
+.find-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.find-us::before {
+  content: "";
+  width: 44px;
+  height: 1px;
+  background: var(--line);
+}
+
+.find-us-label {
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.find-us-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.find-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.56));
+  color: var(--ink);
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.find-chip svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.find-chip:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.98);
+}
+
+.find-chip--wechat { color: var(--accent-2); border-color: rgba(0, 104, 71, 0.28); }
+.find-chip--xhs { color: var(--accent); border-color: rgba(213, 43, 30, 0.28); }
+.find-chip--site { color: var(--accent-3); border-color: rgba(31, 90, 166, 0.28); }
+
+/* ── 微信双码弹窗 ── */
+.social-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.social-modal.hidden { display: none; }
+
+.social-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 38, 63, 0.46);
+}
+
+.social-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  padding: 26px 22px 24px;
+  text-align: center;
+  background: var(--paper);
+  border: 1px solid rgba(255,255,255,0.62);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.social-modal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent) 0 33.33%, var(--accent-3) 33.33% 66.66%, var(--accent-2) 66.66% 100%);
+}
+
+.social-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.social-modal-title {
+  margin: 6px 0 18px;
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.social-qr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.social-qr { margin: 0; }
+
+.social-qr img {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 1;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.social-qr figcaption {
+  margin-top: 8px;
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
