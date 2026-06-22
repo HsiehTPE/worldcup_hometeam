@@ -651,6 +651,9 @@ body::before {
   text-decoration: none;
 }
 
+/* .primary-button 的 display:inline-flex 会盖过 .hidden,需更高优先级才能在微信弹窗里真正隐藏跳转按钮 */
+#social-modal-link.hidden { display: none; }
+
 .social-qr-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
