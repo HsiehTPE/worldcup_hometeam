@@ -660,7 +660,7 @@ const SOCIAL_CONTENT = {
   xhs: {
     title: "在小红书找到我们",
     copy: "点击下方按钮，前往我们的小红书主页",
-    link: "https://www.xiaohongshu.com/user/profile/630711410000000012003e0a?xsec_token=AB7n_ieBf67R-5crn10MxeBJjWdIrNl5f3zuyglhTVeJE%3D&xsec_source=pc_note",
+    link: "https://www.xiaohongshu.com/user/profile/630711410000000012003e0a",
     linkLabel: "前往小红书主页"
   }
 };
